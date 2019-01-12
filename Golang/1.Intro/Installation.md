@@ -28,9 +28,9 @@ export GOPATH=$HOME/go_workspace/go
 **Automatically set ```Environment_Variables``` every time physical machine is powered on**
 
 ```
-export GOROOT=/etc/go
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/go_workspace/go
+echo 'export GOROOT=/etc/go' >> $HOME/.profile
+echo 'export PATH=$PATH:$GOROOT/bin' >> $HOME/.profile
+echo 'export GOPATH=$HOME/go_workspace/go' >> $HOME/.profile
 ```
 
 Verify: ```go version```
