@@ -77,6 +77,17 @@ func main() {
 	db.Create(&person1)
 	db.Create(&person2)
 	db.Create(&person3)
+
+	person4 := []User{
+		{Name: "Luffy"},
+		{Name: "Sanji"},
+	}
+
+	lang3 := Language{
+		Name:  "JP",
+		Users: person4,
+	}
+	db.Create(&lang3)
 }
 
 type User struct {
@@ -87,8 +98,8 @@ type User struct {
 
 type Language struct {
 	gorm.Model
-	Name string
-	User []User `gorm:"many2many:user_languages";"foreignkey:LanguageID";"association_foreignkey:ID"`
+	Name  string
+	Users []User `gorm:"many2many:user_languages";"foreignkey:LanguageID";"association_foreignkey:ID"`
 }
 
 type UserLanguage struct {
