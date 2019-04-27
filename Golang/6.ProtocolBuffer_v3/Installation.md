@@ -12,7 +12,7 @@ cd /usr/bin
 cp ~/protoc-3.7.1-linux-x86_64/bin/protoc .
 ```
 
-### Copy files from ```ìnclude``` to ```/usr/include```
+### Copy files from ```include``` to ```/usr/include```
 
 ```
 cd /usr/include/
