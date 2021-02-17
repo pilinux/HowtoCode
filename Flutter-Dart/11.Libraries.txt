@@ -1,0 +1,23 @@
+# library: code inside a filename.dart file
+
+# importing:
+# - custom library:
+import 'package:filename.dart';
+import 'package:path/to/file/filename.dart';
+
+# - built-in library:
+import 'dart:math';
+import 'dart:io';
+
+# - if two libraries having a class with the same name
+import 'package:libraryOne.dart';
+import 'package:libraryTwo.dart' as second;
+
+void main() {
+  var one = MyClass();
+  var two = second.MyClass();
+}
+
+# import selective types only
+import 'package:libraryOne.dart' show MyClass; // imports only MyClass, discards the rest
+import 'package:libraryTwo.dart' hide MyClass; // imports everything except MyClass
