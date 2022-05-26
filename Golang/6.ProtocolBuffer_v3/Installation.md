@@ -2,55 +2,52 @@
 
 Download page: https://github.com/protocolbuffers/protobuf/releases
 
-### Install ```protoc``` at ```/usr/bin``` path
+### Install `protoc` at `$HOME/.local`
+
+- Unzip the file under `$HOME/.local` directory:
+
+`unzip protoc-3.15.8-linux-x86_64.zip -d ~/.local`
+
+- Update environment’s path variable to include
+  the path to the protoc executable:
+
+`export PATH="$PATH:$HOME/.local/bin"`
+
+### Install the protocol compiler plugins for Go
 
 ```
-cd ~/
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.1/protoc-3.7.1-linux-x86_64.zip
-unzip protoc-3.7.1-linux-x86_64.zip
-cd /usr/bin
-cp ~/protoc-3.7.1-linux-x86_64/bin/protoc .
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
-### Copy files from ```include``` to ```/usr/include```
-
-```
-cd /usr/include/
-cp -r ~/protoc-3.7.1-linux-x86_64/include/* .
-```
-
-### Install the ```proto``` package
-
-```
-go get -u github.com/golang/protobuf/protoc-gen-go
-```
-
-### Move ```protoc-gen-go``` to ```$GOROOT/bin```
+- Copy `protoc-gen-go` & `protoc-gen-go-grpc` to `$GOROOT/bin`:
 
 ```
 cd $GOROOT/bin
 cp $GOPATH/bin/protoc-gen-go .
+cp $GOPATH/bin/protoc-gen-go-grpc .
 ```
 
 ### Verification
 
-- Create ```sample.proto``` file:
+- Clone the `grpc-go` repo:
+
+`git clone -b v1.46.0 --depth 1 https://github.com/grpc/grpc-go`
+
+- Change to the quick start example directory:
+
+`cd grpc-go/examples/helloworld/helloworld`
+
+- Remove existing `*pb.go` files:
+
+`rm helloworld_grpc.pb.go helloworld.pb.go`
+
+- Regenerate gRPC code:
 
 ```
-syntax="proto3";
-
-package main;
-
-message Person {
-	string name = 1;
-	int32 age = 2;
-}
+protoc --go_out=. --go_opt=paths=source_relative \
+--go-grpc_out=. --go-grpc_opt=paths=source_relative \
+helloworld.proto
 ```
 
-- Execute the following command:
-
-```
-protoc --go_out=. *.proto
-```
-
-It should create a file called ```sample.pb.go```.
+It should generate `helloworld_grpc.pb.go` & `helloworld.pb.go` files.
