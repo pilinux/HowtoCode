@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.2.
 
+## Planning the app
+
+![App.Planning][02]
+
 ## Getting started
 
 `ng new recipe-app --no-strict`
@@ -35,19 +39,19 @@ angular.json:
 ],
 ```
 
-`ng g c header -skip-tests`
+`ng g c header --skip-tests`
 
-`ng g c recipes -skip-tests`
+`ng g c recipes --skip-tests`
 
-`ng g c recipes/recipe-list -skip-tests`
+`ng g c recipes/recipe-list --skip-tests`
 
-`ng g c recipes/recipe-detail -skip-tests`
+`ng g c recipes/recipe-detail --skip-tests`
 
-`ng g c recipes/recipe-list/recipe-item -skip-tests`
+`ng g c recipes/recipe-list/recipe-item --skip-tests`
 
-`ng g c shopping-list -skip-tests`
+`ng g c shopping-list --skip-tests`
 
-`ng g c shopping-list/shopping-edit -skip-tests`
+`ng g c shopping-list/shopping-edit --skip-tests`
 
 Replace files from this repo:
 
@@ -92,3 +96,4 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ![App][01]
 
 [01]: final-app.png
+[02]: planned.app.svg
