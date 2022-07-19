@@ -37,22 +37,7 @@ func main() {
 			return
 		}
 
-		domain, visits := parsed.domain, parsed.visits
-
-		if _, ok := p.sum[domain]; !ok {
-			p.domains = append(p.domains, domain)
-		}
-
-		// a value can be assigned to addressable elements
-		// map elements are not addressable
-		// hence, this won't work
-		// p.sum[domain].visits += visits
-		p.sum[domain] = result{
-			domain: domain,
-			visits: visits + p.sum[domain].visits, // current visits + old visits
-		}
-
-		p.total += visits
+		p = update(p, parsed)
 	}
 
 	// after "Domain", add spaces
@@ -104,6 +89,27 @@ func parse(p parser, line string) (result, error) {
 	}
 
 	return parsed, err
+}
+
+func update(p parser, parsed result) parser {
+	domain, visits := parsed.domain, parsed.visits
+
+	if _, ok := p.sum[domain]; !ok {
+		p.domains = append(p.domains, domain)
+	}
+
+	// a value can be assigned to addressable elements
+	// map elements are not addressable
+	// hence, this won't work
+	// p.sum[domain].visits += visits
+	p.sum[domain] = result{
+		domain: domain,
+		visits: visits + p.sum[domain].visits, // current visits + old visits
+	}
+
+	p.total += visits
+
+	return p
 }
 
 /*
