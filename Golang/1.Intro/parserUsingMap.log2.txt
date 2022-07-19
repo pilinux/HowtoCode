@@ -1,0 +1,6 @@
+google.com 10
+apple.com -25
+apple.com 15
+google.com 33
+tesla.com 12
+google.com 17
