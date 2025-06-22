@@ -356,4 +356,15 @@ func main() {
 		Channel operations completed successfully
 	*/
 
+	// study24()
+	// nil channel
+	/*
+		Output:
+		fatal error: all goroutines are asleep - deadlock!
+
+		nil channel:
+		- sending or receiving on a nil channel blocks forever.
+		- closing a nil channel causes a runtime panic.
+		- nil channels are often used to signal that no communication should happen.
+	*/
 }
