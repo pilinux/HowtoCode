@@ -313,7 +313,7 @@ func main() {
 	*/
 
 	// study22()
-	// select statement with channels
+	// for select construct with channel
 	/*
 		Output:
 		Channel created successfully
@@ -327,7 +327,9 @@ func main() {
 		Sent value to channel: 5
 		Received value from channel: 4
 		Received value from channel: 5
-		Channel closed after sending all values
+		Channel closed after sending all values - 2
+		Channel closed after sending all values - 1
+		Channel operations completed successfully
 	*/
 
 	// study23()

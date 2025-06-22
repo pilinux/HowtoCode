@@ -16,9 +16,9 @@ func study22() {
 			ch <- i
 			fmt.Printf("Sent value to channel: %d\n", i)
 		}
-		close(ch)
 		done <- true // signal completion
-		fmt.Println("Channel closed after sending all values")
+		close(ch)
+		fmt.Println("Channel closed after sending all values - 1")
 	}()
 
 	for {
@@ -31,8 +31,7 @@ func study22() {
 				fmt.Printf("Received value from channel: %d\n", v)
 			}
 		case <-done:
-			fmt.Println("Channel closed after sending all values")
-			return // exit the loop
+			fmt.Println("Channel closed after sending all values - 2")
 		}
 
 		if ch == nil {
@@ -55,6 +54,8 @@ func study22() {
 		Sent value to channel: 5
 		Received value from channel: 4
 		Received value from channel: 5
-		Channel closed after sending all values
+		Channel closed after sending all values - 2
+		Channel closed after sending all values - 1
+		Channel operations completed successfully
 	*/
 }
