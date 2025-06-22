@@ -379,4 +379,26 @@ func main() {
 		nil channel:
 		- closing a nil channel causes a runtime panic.
 	*/
+
+	// study26()
+	// split and merge channels
+	/*
+		Output:
+		Merged results:
+		4
+		2
+		8
+		6
+		10
+		14
+		16
+		12
+		18
+		20
+
+		Note:
+		- The output may vary due to the non-deterministic nature of goroutines.
+		- once you read from a channel (e.g., to print),
+		those values are gone and cannot be read again by another goroutine or function.
+	*/
 }
