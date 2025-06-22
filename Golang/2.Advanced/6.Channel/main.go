@@ -367,4 +367,16 @@ func main() {
 		- closing a nil channel causes a runtime panic.
 		- nil channels are often used to signal that no communication should happen.
 	*/
+
+	// study25()
+	// nil channel: runtime panic on close
+	/*
+		Output:
+		Channel created successfully
+		Sent value to channel: 1
+		panic: close of nil channel
+
+		nil channel:
+		- closing a nil channel causes a runtime panic.
+	*/
 }
